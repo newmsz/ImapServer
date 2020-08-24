@@ -1,8 +1,7 @@
+const plugin = module.exports = { };
 
-var plugin = module.exports = {};
-
-plugin.connection = function(connection, next) {
-    var caps = connection.getCapabilities();
-    connection.send(null, 'OK', '[CAPABILITY '+caps.join(' ')+'] '+this.serverName+' wellcome you!');
-    next();
+plugin.connection = function (connection, next) {
+  let caps = connection.getCapabilities();
+  connection.send(null, 'OK', `[CAPABILITY ${caps.join(' ')}] ${this.notes.announce || ''}`);
+  next();
 };

@@ -25,4 +25,3 @@ function WrapAuthPlain(cb) {
     return auth_plain;
 }
 module.exports = WrapAuthPlain;
-
