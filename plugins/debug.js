@@ -47,6 +47,11 @@ plugin.unknown_command = function (c, line, args, next) {
   if(typeof args == 'function') {
     next = args;
     args = '';
+  } else {
+    line = {
+      command: line,
+      args: args
+    }
   }
 
   debug('[%s:%d] Unknown %s :', c.notes.remoteAddress,
