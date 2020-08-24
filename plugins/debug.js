@@ -43,7 +43,12 @@ plugin.secure = function (c, next) {
   next();
 };
 
-plugin.unknown_command = function (c, line, next) {
+plugin.unknown_command = function (c, line, args, next) {
+  if(typeof args == 'function') {
+    next = args;
+    args = '';
+  }
+
   debug('[%s:%d] Unknown %s :', c.notes.remoteAddress,
       c.notes.remotePort, line.command, line.args);
   next(null, 'BAD', 'Unknown command');
